@@ -1,0 +1,398 @@
+/* ============================================================
+   style.pc.css  —  PC専用レイアウト（試作 / 2026-09-13）
+   ------------------------------------------------------------
+   ・index_pc.html からのみ読み込まれる試作ファイル。
+   ・下の @media (min-width: 1024px) より外に書いてよいのは、
+     index.html には存在しない .pc-only 要素の既定値だけ。
+     それ以外は1行残らずメディアクエリの中に入れること。
+     → スマホ幅（〜1023px）では既存デザインに一切影響しない。
+   ・既存HTMLに inline style が多いため、必要な箇所のみ !important で上書きしている。
+     本番採用する場合は inline style をクラス化してから !important を外すこと。
+   ・余白は8pxスケール（8/16/24/32/40/64）、影は拡散型の弱い影で統一。
+   ・配色・フォントは既存ブランドのまま（ネイビー/オリーブ/クリーム/ゴールド、
+     Noto Serif JP + Noto Sans JP）。
+   ============================================================ */
+
+/* PC専用要素は既定で非表示（index.html には存在しない要素なので既存に影響なし） */
+.pc-only { display: none; }
+
+@media (min-width: 1024px) {
+
+    /* ページ内アンカー（#contact-area 等）へ飛んだとき、
+       固定ヘッダーの下に見出しが隠れないようにする */
+    html { scroll-padding-top: 120px; }
+
+    /* ---------- 全体の器 ---------- */
+    .container {
+        max-width: 1280px;
+        padding-bottom: 0;
+        box-shadow: 0 8px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    /* PCでは下部固定の電話バーは出さない（ヘッダーに常時表示するため） */
+    .fixed-call-bar { display: none !important; }
+
+    /* ---------- ヘッダー：グローバルナビ＋電話を常時表示 ---------- */
+    .main-header { padding: 10px 32px; }
+
+    .header-content {
+        max-width: 1216px;
+        margin: 0 auto;
+        gap: 24px;
+    }
+
+    .header-content img {
+        width: 58px !important;
+        height: 58px !important;
+    }
+
+    .name-container { align-items: flex-start; text-align: left; }
+    .clinic-name { font-size: 1.3rem; }
+    .clinic-name-en { font-size: 0.8rem; }
+
+    /* ハンバーガーとドロワーはPCでは不要 */
+    .menu-btn-container { display: none !important; }
+    .nav-drawer, .nav-overlay { display: none !important; }
+
+    .pc-nav {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin-left: auto;
+    }
+
+    .pc-nav a {
+        display: block;
+        padding: 10px 14px;
+        color: var(--primary-navy);
+        font-size: 0.9rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-decoration: none;
+        border-bottom: 2px solid transparent;
+        transition: border-color 0.2s, color 0.2s;
+        white-space: nowrap;
+    }
+
+    .pc-nav a:hover {
+        color: var(--accent-olive);
+        border-bottom-color: var(--accent-olive);
+    }
+
+    .pc-contact {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 2px;
+        padding-left: 24px;
+        border-left: 1px solid rgba(139, 139, 94, 0.25);
+        flex-shrink: 0;
+    }
+
+    .pc-status {
+        display: inline-block;
+        padding: 2px 12px;
+        border-radius: 9999px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        background: #F1F1EC;
+        color: #6B6B58;
+        border: 1px solid #E2E2D8;
+        white-space: nowrap;
+    }
+
+    /* 受付時間内だけ緑。時間外はグレーのまま（電話してよい時間かが一目で分かる） */
+    .pc-status.is-open {
+        background: #E8F5E9;
+        color: #2E7D32;
+        border-color: #A5D6A7;
+    }
+
+    .pc-tel {
+        font-family: 'Noto Serif JP', serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1.2;
+        color: var(--primary-navy);
+        text-decoration: none;
+        letter-spacing: 0.02em;
+    }
+
+    .pc-tel-note {
+        font-size: 0.68rem;
+        color: #666;
+        white-space: nowrap;
+    }
+
+    /* ---------- 見出し ---------- */
+    .section-title-wrapper { margin: 0 0 32px; gap: 24px; }
+    .section-title-wrapper::before,
+    .section-title-wrapper::after { width: 64px; }
+    .section-title { font-size: 1.7rem; }
+
+    /* ---------- ヒーロー ---------- */
+    /* 額縁の世界観を保ちつつ、コンテンツ幅より少しだけ広げて迫力を出す（最大1600px）。
+       完全に額縁優先にしたい場合は、この .hero ブロックを丸ごと削除すれば1280px幅に収まる。 */
+    .hero {
+        width: min(1600px, 100vw);
+        margin-left: calc(50% - min(800px, 50vw));
+        margin-top: 0;
+    }
+
+    .hero-main-img {
+        height: clamp(420px, 52vh, 560px);
+        object-fit: cover;
+        object-position: center 42%;
+    }
+
+    .hero-top-overlay { top: 16%; width: min(90%, 900px); }
+    .hero-floor-overlay { bottom: 104px; width: min(90%, 860px); }
+    .hero-floor-title { font-size: 2.1rem; line-height: 1.5; margin-bottom: 16px; }
+    .hero-floor-subtitle { font-size: 1.1rem; line-height: 1.9; }
+    .location-tag { font-size: 1.05rem; padding: 16px; }
+
+    /* ---------- 診療時間：表（左）／受付・注意（右）の2カラム ---------- */
+    .consultation-section { padding: 64px 40px; }
+
+    .consultation-card {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 24px 40px;
+        align-items: start;
+        max-width: 1040px;
+        margin: 0 auto;
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 4px 16px rgba(15, 23, 42, 0.07);
+    }
+
+    .consultation-card .consultation-summary {
+        grid-column: 1 / -1;
+        margin-bottom: 0;
+        font-size: 1.05rem;
+        padding: 16px;
+        border-radius: 8px;
+    }
+
+    .consultation-card .hours-table {
+        grid-column: 1;
+        grid-row: 2;
+        margin-bottom: 0;
+        font-size: 1rem;
+    }
+
+    .consultation-card .hours-table th { padding: 14px 8px; }
+    .consultation-card .hours-table td { padding: 18px 8px; }
+
+    .consultation-card .reception-info-box {
+        grid-column: 2;
+        grid-row: 2;
+        margin-bottom: 0;
+        padding: 24px;
+        border-radius: 8px;
+    }
+
+    .consultation-card .info-item { font-size: 0.95rem; margin-bottom: 16px; }
+
+    .consultation-card .alert-banner-soft {
+        grid-column: 1 / -1;
+        margin-bottom: 0;
+        padding: 24px 32px;
+    }
+
+    .consultation-card .center { grid-column: 1 / -1; }
+    .consultation-card .center .btn-premium-gold { max-width: 360px !important; }
+
+    /* ---------- お知らせ（院長あいさつ）：読みやすい行長に制限 ---------- */
+    .news-section { padding: 64px 40px; }
+
+    .news-section .greeting-card {
+        max-width: 820px;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .news-section .rounded-badge {
+        max-width: 480px;
+        margin: 0 auto 32px;
+        padding: 16px 24px;
+        border-radius: 8px;
+    }
+
+    .news-section .greeting-content p { font-size: 1.02rem; }
+
+    /* ---------- 当院の特徴：3カラムのカード ---------- */
+    .features-section {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+        padding: 64px 40px;
+        align-items: stretch;
+    }
+
+    .features-section > .section-title-wrapper { grid-column: 1 / -1; }
+
+    .features-section > .brick-banner {
+        grid-column: 1 / -1;
+        max-width: 1000px;
+        margin: 0 auto 16px;
+        border-radius: 8px;
+    }
+
+    .features-section > .feature-item {
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        border: 1px solid rgba(139, 139, 94, 0.22);
+        border-radius: 8px;
+        padding: 32px 28px !important;
+        box-shadow: 0 4px 16px rgba(15, 23, 42, 0.07);
+    }
+
+    .features-section > .feature-item h3 { font-size: 1.2rem; line-height: 1.6; }
+    .features-section > .feature-item p { flex: 1 1 auto; font-size: 0.95rem; }
+    .features-section > .feature-item > div:last-child { margin-top: auto; }
+
+    /* ---------- 診療案内 ---------- */
+    .services-section { padding: 64px 0; }
+
+    /* 冒頭の写真＋説明文を左右2カラムに */
+    .services-section .pc-services-intro {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 40px;
+        align-items: center;
+        max-width: 1100px;
+        margin: 0 auto 40px;
+        padding: 0 40px !important;
+        text-align: left !important;
+    }
+
+    .services-section .pc-services-intro img {
+        height: 320px;
+        object-fit: cover;
+        border-radius: 8px !important;
+        margin-bottom: 0 !important;
+        box-shadow: 0 4px 16px rgba(15, 23, 42, 0.07) !important;
+    }
+
+    .services-section .feature-detail-box {
+        max-width: 1100px;
+        margin: 0 auto 40px !important;
+        padding: 28px 32px !important;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 40px;
+    }
+
+    /* 超音波検査（目玉）は2列分を使って横長に見せる */
+    .services-grid .service-item-card.featured {
+        grid-column: span 2 !important;
+        justify-content: center;
+    }
+
+    .services-grid .service-item-card {
+        padding: 24px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 16px rgba(26, 43, 76, 0.10);
+    }
+
+    .services-grid .service-item-card h4 { font-size: 1.02rem; }
+    .services-grid .service-item-card p { font-size: 0.88rem !important; }
+
+    .services-section .pc-services-cta { margin-top: 40px !important; }
+
+    /* ---------- 施設ギャラリー：横スクロールをやめて4列グリッドに ---------- */
+    .facility-gallery-section { padding: 32px 0 64px; }
+
+    .facility-gallery-hint { display: none; }
+
+    .facility-gallery-scroll {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        overflow: visible;
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 40px 24px;
+    }
+
+    .facility-gallery-item {
+        flex: none;
+        max-width: none;
+        border-radius: 8px;
+        box-shadow: 0 4px 16px rgba(15, 23, 42, 0.07);
+    }
+
+    /* 高さ固定ではなく縦横比で指定し、画面幅が変わっても比率が保たれるようにする */
+    .facility-gallery-item img { aspect-ratio: 4 / 3; height: auto; object-fit: cover; }
+
+    /* ---------- 基本情報：住所など（左）／地図（右）＋電話カード（下段全幅） ---------- */
+    .clinic-info { padding: 64px 40px; }
+
+    .clinic-info .info-banner-blue {
+        max-width: 1040px;
+        margin: 0 auto;
+        height: 120px !important;
+        justify-content: center;
+        border-radius: 8px 8px 0 0;
+    }
+
+    .clinic-info .pc-info-box {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 40px;
+        align-items: start;
+        max-width: 1040px;
+        margin: 0 auto !important;
+        padding: 40px !important;
+        border-radius: 0 0 8px 8px !important;
+    }
+
+    /* 住所・院長・駐車場・駐輪場・交通機関 → 左カラム。
+       項目が増減してもレイアウトが崩れないよう、行数に依存しない置き方にしている。 */
+    .clinic-info .pc-info-list {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .clinic-info .pc-info-list > div { margin-bottom: 32px !important; }
+    .clinic-info .pc-info-list > div:last-child { margin-bottom: 0 !important; }
+
+    /* 地図 → 右カラム。左カラムの高さに合わせて伸びる */
+    .clinic-info .pc-map {
+        grid-column: 2;
+        grid-row: 1;
+        align-self: stretch;
+        height: auto !important;
+        min-height: 440px;
+        margin: 0 !important;
+        border-radius: 8px !important;
+    }
+
+    /* 電話カード → 最下段に全幅 */
+    .clinic-info .pc-info-box > #contact-area {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        margin-top: 32px;
+        padding: 32px 40px !important;
+        border-radius: 8px !important;
+    }
+
+    .clinic-info #contact-area a[href^="tel:"] { font-size: 2.2rem !important; }
+
+    .clinic-info #contact-area > div > div {
+        max-width: 420px !important;
+        margin: 0 auto !important;
+        border-radius: 8px !important;
+    }
+
+    /* ---------- フッター ---------- */
+    .footer { padding: 64px 40px; }
+}
