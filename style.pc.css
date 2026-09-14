@@ -135,15 +135,15 @@
     /* 額縁の世界観を保ちつつ、コンテンツ幅より少しだけ広げて迫力を出す（最大1600px）。
        完全に額縁優先にしたい場合は、この .hero ブロックを丸ごと削除すれば1280px幅に収まる。 */
     .hero {
-        width: min(1600px, 100vw);
-        margin-left: calc(50% - min(800px, 50vw));
+        width: min(1320px, 100vw);
+        margin-left: calc(50% - min(660px, 50vw));
         margin-top: 0;
     }
 
     .hero-main-img {
-        height: clamp(420px, 52vh, 560px);
+        height: clamp(460px, 46vh, 600px);
         object-fit: cover;
-        object-position: center 42%;
+        object-position: center 38%;
     }
 
     .hero-top-overlay { top: 16%; width: min(90%, 900px); }
