@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>市の健診 | やすなが内科クリニック</title>
     <meta name="description" content="やすなが内科クリニックで実施している福岡市の健診・検査のご案内。前立腺がん検診、大腸がん検診、胃がんリスク検査、肝炎ウィルス検査、風疹抗体検査、よかドックに対応しています（要予約）。">
-    <link rel="stylesheet" href="style.final.css?v=23">
+    <link rel="stylesheet" href="style.final.css?v=26">
     <!-- PC専用レイアウト。中身はすべて @media (min-width:1024px) で囲まれているため、スマホ幅では1行も効きません -->
-    <link rel="stylesheet" href="style.pc.css?v=4">
+    <link rel="stylesheet" href="style.pc.css?v=6">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -209,7 +209,6 @@
 
         <div style="text-align: center; padding: 10px 20px 60px; display: flex; flex-direction: column; gap: 14px; align-items: center;">
             <a href="診療内容_pc.html" class="btn-premium-gold">診療案内一覧に戻る</a>
-            <a href="#" class="scroll-top-link">↑ トップへ</a>
             <a href="index_pc.html" class="btn-3d">トップページに戻る</a>
         </div>
 
@@ -235,7 +234,13 @@
             お電話でのご予約・お問い合わせ
         </a>
     </div>
-    <script src="script.js?v=9"></script>
+    <button type="button" class="scroll-top-btn" aria-label="ページ最上部へ戻る">
+        <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false">
+            <path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor"
+                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+    <script src="script.js?v=10"></script>
     <script>
     // PC版ヘッダーの診療ステータス表示。判定ロジックは script.js のものをそのまま流用し、
     // #clinic-status-summary の結果をヘッダーへ写すだけにして二重管理を避ける。

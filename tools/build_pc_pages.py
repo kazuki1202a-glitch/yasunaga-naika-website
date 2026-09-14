@@ -121,12 +121,21 @@ def transform(html, name, version=None):
             return html
         return html.replace(old, new, 1)
 
-    # 1) style.pc.css のリンク
-    marker = '    <link rel="stylesheet" href="style.final.css?v=23">\n'
+    def rep_re(pattern, make_new, what):
+        """バージョン番号のようにキャッシュバスターで変動する部分は正規表現で拾う。
+           （以前は ?v=23 等をベタ書きしていたため、バージョンを上げるたびにビルドが壊れていた）"""
+        m = re.search(pattern, html)
+        if not m:
+            problems.append(what)
+            return html
+        return html[:m.end()] + make_new(m) + html[m.end():]
+
+    # 1) style.pc.css のリンク（style.final.css のリンク行の直後に挿し込む）
     link = ('    <!-- PC専用レイアウト。中身はすべて @media (min-width:1024px) で囲まれているため、'
             'スマホ幅では1行も効きません -->\n'
             '    <link rel="stylesheet" href="style.pc.css?v=%d">\n' % version)
-    html = rep(marker, marker + link, "style.final.css のリンクが見つからない")
+    html = rep_re(r'[ \t]*<link rel="stylesheet" href="style\.final\.css\?v=\d+">\n',
+                  lambda m: link, "style.final.css のリンクが見つからない")
 
     # 2) ヘッダーのロゴリンク（本番は flex-grow:1 で横幅を食い尽くすためPCでは打ち消す）
     html = rep(BRAND_ANCHOR_OLD, BRAND_ANCHOR_NEW, "ヘッダーのブランドリンクが見つからない")
@@ -151,8 +160,8 @@ def transform(html, name, version=None):
         html = rep(old, new, ".pc-wide 対象が見つからない: %s" % old[:50])
 
     # 6) 診療ステータス同期スクリプト
-    tail = '    <script src="script.js?v=9"></script>\n'
-    html = rep(tail, tail + SYNC_SCRIPT, "script.js の読み込みが見つからない")
+    html = rep_re(r'[ \t]*<script src="script\.js\?v=\d+"></script>\n',
+                  lambda m: SYNC_SCRIPT, "script.js の読み込みが見つからない")
 
     if problems:
         raise BuildError("%s: %s" % (name, " / ".join(problems)))

@@ -166,11 +166,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Scroll-to-top link (placed above the "トップページに戻る" button on each page)
-    document.querySelectorAll('.scroll-top-link').forEach(el => {
-        el.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Floating scroll-to-top button (fixed at the bottom-right of the content column).
+    // Replaces the old "↑ トップへ" text link; the "トップページに戻る" button is untouched.
+    const scrollTopBtn = document.querySelector('.scroll-top-btn');
+    if (scrollTopBtn) {
+        const SHOW_AFTER_PX = 500;
+        let ticking = false;
+
+        const syncScrollTopBtn = () => {
+            ticking = false;
+            const y = window.pageYOffset || document.documentElement.scrollTop || 0;
+            scrollTopBtn.classList.toggle('is-visible', y > SHOW_AFTER_PX);
+        };
+
+        window.addEventListener('scroll', () => {
+            if (ticking) return;
+            ticking = true;
+            window.requestAnimationFrame(syncScrollTopBtn);
+        }, { passive: true });
+
+        scrollTopBtn.addEventListener('click', () => {
+            const reduced = window.matchMedia &&
+                window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
         });
-    });
+
+        // Restoring a scrolled position (reload / bfcache) must show the button right away
+        window.addEventListener('pageshow', syncScrollTopBtn);
+        syncScrollTopBtn();
+    }
 });

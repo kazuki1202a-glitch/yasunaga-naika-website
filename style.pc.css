@@ -37,6 +37,20 @@
     /* PCでは下部固定の電話バーは出さない（ヘッダーに常時表示するため） */
     .fixed-call-bar { display: none !important; }
 
+    /* 「ページ最上部へ戻る」丸ボタン：PCでは電話バーが無いので右下隅でよい。
+       位置の基準はPC用コンテナ（最大1280px）の右端から30px内側。 */
+    .scroll-top-btn {
+        width: 48px;
+        height: 48px;
+        bottom: 30px;
+        margin-left: calc(min(50%, 640px) - 30px - 48px);
+    }
+
+    .scroll-top-btn svg {
+        width: 24px;
+        height: 24px;
+    }
+
     /* ---------- ヘッダー：グローバルナビ＋電話を常時表示 ---------- */
     .main-header { padding: 10px 32px; }
 
