@@ -71,6 +71,50 @@ SYNC_SCRIPT = '''    <script>
     </script>
 '''
 
+# --- サイト内リンクを _pc.html 版に差し替える ---------------------------------
+# PC試作版は _pc.html だけで回遊できないと、途中からスマホ版に落ちてしまう。
+# 以前はこの差し替えを手作業でやっていたため、このスクリプトで作り直すと
+# 元に戻ってしまう（＝スクリプトが本番と _pc.html のずれを再現できない）状態だった。
+# 2026-09-14、下の一律ルールで既存14ページが1バイト違わず再現できることを確認して取り込んだ。
+LINKABLE = PAGES + ["index"]
+LINK_RE = re.compile(
+    r'href="(' + "|".join(re.escape(n) for n in sorted(LINKABLE, key=len, reverse=True))
+    + r')\.html(#[^"]*)?"')
+
+
+def to_pc_links(html):
+    return LINK_RE.sub(
+        lambda m: 'href="%s_pc.html%s"' % (m.group(1), m.group(2) or ""), html)
+
+
+# --- メインナビの現在地強調 ---------------------------------------------------
+# 診療案内の子ページ8枚には自分自身へのナビ項目が無いので、親の「診療案内」を強調する。
+PARENT = "診療内容.html"
+NAV_ACTIVE = {
+    "当院について": "当院について.html",
+    "院長紹介": "院長紹介.html",
+    "診療内容": PARENT,
+    "一般内科": PARENT, "消化器内科": PARENT, "生活習慣病": PARENT,
+    "感染症外来": PARENT, "ワクチン": PARENT, "超音波検査": PARENT, "市の健診": PARENT,
+    "特定健診": PARENT,
+    # 独立ページ3枚は強調しない
+    "施設基準": None, "自費診療料金": None, "プライバシーポリシー": None,
+}
+
+
+def mark_pc_nav(header, name):
+    """PC_HEADER の pc-nav 内で、そのページに対応する1本にだけ class="active" を付ける。
+       （ハンバーガーメニュー側の印は本番HTMLに入っているのでそのまま流れてくる）"""
+    target = NAV_ACTIVE[name]
+    if target is None:
+        return header
+    old = '<a href="%s">' % target
+    if header.count(old) != 1:
+        raise BuildError("%s: pc-nav に %s が %d 本（1本であるべき）"
+                         % (name, target, header.count(old)))
+    return header.replace(old, '<a href="%s" class="active">' % target, 1)
+
+
 # ページ固有：読み物カラム(860px)から外して横に広げる区画に .pc-wide を付ける
 WIDE = {
     "当院について": [
@@ -142,7 +186,7 @@ def transform(html, name, version=None):
 
     # 3) PCナビ・電話・診療ステータス
     hb = '                <div class="menu-btn-container" id="menuBtn">'
-    html = rep(hb, PC_HEADER + hb, "menu-btn-container が見つからない")
+    html = rep(hb, mark_pc_nav(PC_HEADER, name) + hb, "menu-btn-container が見つからない")
 
     # 4) ドロワー直後〜フッター直前を <main class="pc-main"> で囲む
     drawer_end = ('            <a href="index.html#contact-area" class="nav-drawer-link">'
@@ -165,6 +209,10 @@ def transform(html, name, version=None):
 
     if problems:
         raise BuildError("%s: %s" % (name, " / ".join(problems)))
+
+    # 7) 最後にサイト内リンクをまとめて _pc.html 版へ。
+    #    （ヘッダー・ドロワー・本文のリンクを一度に扱えるので、ここでまとめてやる）
+    html = to_pc_links(html)
     return html
 
 

@@ -98,6 +98,13 @@
         border-bottom-color: var(--accent-olive);
     }
 
+    /* 現在地表示：今見ているページのナビ項目は、hover と同じ見た目を常時つける。
+       診療案内の子ページ（超音波検査など）を見ている時は親の「診療案内」に付く。 */
+    .pc-nav a.active {
+        color: var(--accent-olive);
+        border-bottom-color: var(--accent-olive);
+    }
+
     .pc-contact {
         display: flex;
         flex-direction: column;
@@ -481,6 +488,13 @@
     /* 本番HTMLではロゴ＋医院名のリンクが flex-grow:1 で横幅を食い尽くすため、
        そのままだとPCナビが右端に押し出されて窮屈になる */
     .pc-brand-link { flex-grow: 0 !important; }
+
+    /* ---------- パンくずリスト（.breadcrumb） ---------- */
+    /* 左右の padding は .pc-main > * の打ち消しに任せ、ここでは上下と文字サイズだけ整える。 */
+    .pc-main .breadcrumb {
+        padding-top: 20px;
+        font-size: 0.78rem;
+    }
 
     /* ---------- 目次（.page-toc） ---------- */
     .pc-main .page-toc {

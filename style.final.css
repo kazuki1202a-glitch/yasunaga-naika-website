@@ -1482,3 +1482,63 @@ body.nav-open {
     font-size: 0.75rem;
     text-decoration: underline;
 }
+
+/* ===== 現在地表示：ハンバーガーメニュー ===== */
+/* 今どのページを見ているかを、ドロワー内で太字＋オリーブ＋左の帯で示す。
+   border-left の 4px ぶん padding-left を減らして、文字位置がずれないようにしている。 */
+.nav-drawer-link.active {
+    color: var(--accent-olive);
+    font-weight: 700;
+    background: #FAF9F3;
+    border-left: 4px solid var(--accent-olive);
+    padding-left: 16px;
+}
+
+/* ===== パンくずリスト（診療案内の子ページ） ===== */
+/* 「ホーム ＞ 診療案内 ＞ 超音波検査」。本文の邪魔をしないよう小さく淡く。 */
+/* 色は「淡いが読める」ところを狙っている。#6E6E5F は白背景でコントラスト比 5.17:1 で
+   WCAG AA（普通の文字は4.5:1以上）を満たす。高齢の患者さんが多いので薄くしすぎない。 */
+.breadcrumb {
+    padding: 14px 20px 0;
+    font-size: 0.75rem;
+    line-height: 1.7;
+    color: #6E6E5F;
+}
+
+.breadcrumb ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.breadcrumb li {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+}
+
+/* 区切り「＞」はCSSで入れる（HTMLに書くとスクリーンリーダーが読み上げてしまうため） */
+.breadcrumb li + li::before {
+    content: "＞";
+    margin: 0 6px;
+    color: #8F8F7D;
+    font-size: 0.7rem;
+}
+
+.breadcrumb a {
+    color: #6E6E5F;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover,
+.breadcrumb a:active {
+    color: var(--accent-olive);
+    text-decoration: underline;
+}
+
+.breadcrumb [aria-current="page"] {
+    color: var(--primary-navy);
+}
