@@ -1542,3 +1542,26 @@ body.nav-open {
 .breadcrumb [aria-current="page"] {
     color: var(--primary-navy);
 }
+
+/* ------------------------------------------------------------------
+   狭い端末（iPhone SE=375px / iPhone 12〜14=390px）向けの調整。
+   .clinic-name が white-space: nowrap のため、
+   ロゴ＋クリニック名＋メニューボタンの横一列が最小 421px 必要になり、
+   375px・390px 幅では 46px / 31px ぶん画面からはみ出して
+   ページ全体が横スクロールしていた。ロゴとクリニック名を少し縮めて収める。
+   PC（1024px以上）は style.pc.css 側で上書きされるため影響なし。
+   ------------------------------------------------------------------ */
+@media (max-width: 420px) {
+    .main-header { padding: 5px 12px; }
+    .header-content { gap: 8px; }
+    .header-content > a img {
+        width: 52px !important;
+        height: 52px !important;
+    }
+    .clinic-name { font-size: 1.05rem; letter-spacing: 0.02em; }
+    .clinic-name-en { font-size: 0.78rem; letter-spacing: 0.02em; }
+
+    /* トップページ「基本情報」バナーも同じ理由（クリニック名が nowrap）で
+       ロゴ＋名称の一列が 409px 必要になり、はみ出していた。 */
+    .info-banner-blue p:first-child { font-size: 1.1rem !important; }
+}
