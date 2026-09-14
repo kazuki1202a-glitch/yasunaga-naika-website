@@ -282,7 +282,7 @@
         box-shadow: 0 4px 16px rgba(15, 23, 42, 0.07);
     }
 
-    .features-section > .feature-item h3 { font-size: 1.2rem; line-height: 1.6; }
+    .features-section > .feature-item h3 { font-size: 1.2rem; line-height: 1.6; min-height: 3.2em; }
     .features-section > .feature-item p { flex: 1 1 auto; font-size: 0.95rem; }
     .features-section > .feature-item > div:last-child { margin-top: auto; }
 
