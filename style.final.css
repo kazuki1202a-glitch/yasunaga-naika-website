@@ -1117,7 +1117,8 @@ body.nav-open {
     background: white;
     border: 2px solid rgba(26, 43, 76, 0.45);
     border-radius: 15px;
-    padding: 20px;
+    /* 左右のpaddingを絞って本文1行に入る文字数を稼ぐ（用語の途中改行を防ぐため） */
+    padding: 20px 16px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -1150,6 +1151,14 @@ body.nav-open {
     color: var(--primary-navy);
     text-decoration: underline;
     margin-bottom: 10px;
+}
+
+/* カード本文（診療内容の用語リスト）
+   用語ごとにinline-blockで囲んであるため、字間を詰めて1行に入る用語数を増やし、
+   中央揃えにして行数の少ないカードでも収まりよく見せる */
+.service-item-card p {
+    letter-spacing: normal;
+    text-align: center;
 }
 
 .service-more-link {
