@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一般内科 | やすなが内科クリニック</title>
+    <meta name="description" content="やすなが内科クリニックの一般内科のご案内。呼吸器・アレルギー疾患、循環器疾患、甲状腺・内分泌疾患、泌尿器疾患まで、特定の臓器にとらわれず全身を診ます。">
+    <link rel="stylesheet" href="style.final.css?v=23">
+    <!-- PC専用レイアウト。中身はすべて @media (min-width:1024px) で囲まれているため、スマホ幅では1行も効きません -->
+    <link rel="stylesheet" href="style.pc.css?v=4">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/ロゴ_クローバー.png">
+    <link rel="apple-touch-icon" href="images/ロゴ_クローバー.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="やすなが内科クリニック">
+    <meta property="og:title" content="一般内科 | やすなが内科クリニック">
+    <meta property="og:description" content="やすなが内科クリニックの一般内科のご案内。呼吸器・アレルギー疾患、循環器疾患、甲状腺・内分泌疾患、泌尿器疾患まで、特定の臓器にとらわれず全身を診ます。">
+    <meta property="og:url" content="https://yasunaga-naika.com/一般内科.html">
+    <meta property="og:image" content="https://yasunaga-naika.com/images/ロゴ_クローバー.png">
+    <meta property="og:locale" content="ja_JP">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="一般内科 | やすなが内科クリニック">
+    <meta name="twitter:description" content="やすなが内科クリニックの一般内科のご案内。呼吸器・アレルギー疾患、循環器疾患、甲状腺・内分泌疾患、泌尿器疾患まで、特定の臓器にとらわれず全身を診ます。">
+    <meta name="twitter:image" content="https://yasunaga-naika.com/images/ロゴ_クローバー.png">
+</head>
+<body>
+    <div class="container">
+        <header class="main-header">
+            <div class="header-content">
+                <a class="pc-brand-link" href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; flex-grow: 1;">
+                    <img src="images/ロゴ_クローバー.png" alt="やすなが内科クリニック ロゴ" style="width: 65px; height: 65px; flex-shrink: 0; object-fit: contain;">
+                    <div class="name-container">
+                        <div class="clinic-name">やすなが内科クリニック</div>
+                        <div class="clinic-name-en">内科・消化器内科</div>
+                    </div>
+                </a>
+                <nav class="pc-nav pc-only" aria-label="メインメニュー">
+                    <a href="index.html">トップ</a>
+                    <a href="当院について.html">当院について</a>
+                    <a href="院長紹介.html">院長紹介</a>
+                    <a href="診療内容.html">診療案内</a>
+                    <a href="index.html#contact-area">アクセス</a>
+                </nav>
+                <div class="pc-contact pc-only">
+                    <span class="pc-status" id="pcStatus">診療時間をご確認ください</span>
+                    <a class="pc-tel" href="tel:092-874-3433">092-874-3433</a>
+                    <span class="pc-tel-note">受付 午前 9:00〜11:30 ／ 午後 14:00〜16:30</span>
+                </div>
+                <!-- 診療ステータスの判定ロジックは script.js のものをそのまま使いたいので、
+                     script.js が書き込む先の #clinic-status-summary を非表示で置いておく。
+                     （下層ページには診療時間カードが無いため） -->
+                <span id="clinic-status-summary" class="pc-status-source"></span>
+                <div class="menu-btn-container" id="menuBtn">
+                    <div class="menu-rect">
+                        <span class="menu-bar"></span>
+                        <span class="menu-bar"></span>
+                        <span class="menu-bar"></span>
+                    </div>
+                    <div class="menu-label">メニュー</div>
+                </div>
+            </div>
+        </header>
+        <div class="nav-overlay" id="navOverlay"></div>
+        <nav class="nav-drawer" id="navDrawer">
+            <div class="nav-drawer-header">
+                <span>メニュー</span>
+                <button class="nav-drawer-close" id="navDrawerClose" aria-label="閉じる">&times;</button>
+            </div>
+            <a href="index.html" class="nav-drawer-link">トップページ</a>
+            <a href="当院について.html" class="nav-drawer-link">当院について</a>
+            <a href="院長紹介.html" class="nav-drawer-link">院長紹介</a>
+            <a href="診療内容.html" class="nav-drawer-link">診療案内一覧</a>
+            <a href="index.html#contact-area" class="nav-drawer-link">アクセス・お問い合わせ</a>
+        </nav>
+
+        <main class="pc-main">
+
+        <div style="padding: 15px 15px 0;">
+            <img src="images/一般内科_v2.jpg" alt="一般内科" style="width: 100%; border-radius: 12px; display: block; box-shadow: 0 10px 25px rgba(0,0,0,0.08);">
+        </div>
+
+        <section class="about-photo-section">
+            <p style="font-size: 1.05rem; line-height: 1.95; margin-top: 20px; font-weight: bold; color: var(--primary-navy);">特定の臓器にとらわれず、身体全体を丁寧に診ます</p>
+            <p style="font-size: 1.05rem; line-height: 1.95;">当院の一般内科では、一般的な内科疾患から各種専門的な領域まで総合的に診療を行っています。丁寧な診察と必要に応じ院内での迅速・精密な超音波検査や各種検査機器を活用し、症状の原因を探ります。何科にかかるべきか判断に迷う症状につきましても、まずは当院へご相談ください。</p>
+
+            <div class="feature-detail-box" style="padding: 24px; margin: 28px 0;">
+                <span class="feature-tag" style="font-size: 0.9rem; padding: 5px 14px;">幅広い超音波（エコー）検査で、隠れた原因を探ります</span>
+                <p style="font-size: 1rem; line-height: 1.9; margin-top: 14px;">当院では、腹部領域だけではなく、必要に応じて腎臓、膀胱、前立腺（男性）、卵巣・子宮（女性）まで広範囲にわたり超音波検査を行っています。自覚症状だけでは分かりにくい体の変化も、超音波検査によって包括的に検査・初期診断いたします。また、精密な検査や治療、入院が必要な場合は、適切な専門病院や地域の基幹病院へご紹介いたします。お困りの症状があれば、健康の窓口として遠慮なく当院にご相談ください。</p>
+                <div style="text-align: center; margin-top: 16px;">
+                    <a href="超音波検査.html" class="btn-premium-gold">超音波検査の詳細はこちら</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ミニ目次 -->
+        <nav class="page-toc">
+            <a href="#kenshin" class="toc-link">健診の再検査</a>
+            <a href="#koujousen" class="toc-link">甲状腺・内分泌</a>
+            <a href="#hinyouki" class="toc-link">泌尿器疾患</a>
+            <a href="#kokyuki" class="toc-link">アレルギー・呼吸器</a>
+            <a href="#junkanki" class="toc-link">循環器疾患</a>
+            <a href="#sonota" class="toc-link">その他の疾患</a>
+        </nav>
+
+        <section class="about-photo-section" style="padding-top: 0;">
+            <div id="kenshin" class="feature-detail-box" style="scroll-margin-top: 75px; padding: 24px; margin: 10px 0 28px;">
+                <span class="feature-tag" style="font-size: 0.9rem; padding: 5px 14px;">健康診断で「要検査」などの指摘を受けた方へ</span>
+                <p style="font-size: 1rem; line-height: 1.9; margin-top: 14px;">健康診断で「要検査」「要精密検査」「要受診」などの指摘があった場合、すぐに病気と決まったわけではありません。</p>
+                <p style="font-size: 1rem; line-height: 1.9; margin-top: 10px;">健康診断は、病気の可能性や健康状態の変化を早めに見つけるためのものです。検査値が基準から外れていたり、画像検査などで気になる所見があった場合に、原因を詳しく確認するため「要検査」などと判定されることがあります。</p>
+                <p style="font-size: 1rem; line-height: 1.9; margin-top: 10px;">一時的な体調や生活習慣による変化の場合もありますが、病気が隠れている可能性もあります。「症状がないから大丈夫」と自己判断せず、指摘された内容に応じて医療機関を受診し、必要な検査を受けることが大切です。</p>
+                <p style="font-size: 1rem; line-height: 1.9; margin-top: 10px;">当院では、健康診断の結果を確認しながら、現在の健康状態やこれまでの病気・治療歴などを踏まえて、必要な検査や対応についてご相談いただけます。</p>
+                <p style="font-size: 1rem; line-height: 1.9; margin-top: 10px;">健康診断の結果で気になることがありましたら、お気軽にご相談ください。</p>
+                <p style="font-size: 1rem; line-height: 1.9; margin-top: 14px;">気になる項目から、どうぞご覧ください。</p>
+                <div style="display: flex; flex-direction: column; gap: 12px; align-items: center; margin-top: 6px;">
+                    <a href="生活習慣病.html" class="btn-premium-gold" style="width: 100%; text-align: center; box-sizing: border-box;">血糖値・脂質・血圧・尿酸が気になる方</a>
+                    <a href="消化器内科.html#kanzou" class="btn-premium-navy" style="width: 100%; text-align: center; box-sizing: border-box;">肝機能・肝臓、胆のうの病変を指摘された方へ</a>
+                    <a href="超音波検査.html" class="btn-3d btn-olive" style="width: 100%; text-align: center; box-sizing: border-box;">精密検査（エコー）をご希望の方</a>
+                </div>
+            </div>
+
+            <div id="koujousen" class="feature-detail-box" style="scroll-margin-top: 75px; padding: 24px; margin: 28px 0;">
+                <span class="feature-tag" style="font-size: 0.9rem; padding: 5px 14px;">甲状腺・内分泌疾患</span>
+                <p style="font-size: 1rem; line-height: 1.9; margin: 14px 0 8px;"><strong>対象疾患：</strong>甲状腺腫瘍、慢性甲状腺炎、バセドウ病</p>
+                <p style="font-size: 1rem; line-height: 1.9; margin-bottom: 14px;"><strong>主な検査：</strong>血液検査（ホルモン・抗体測定）および甲状腺超音波検査（エコー）</p>
+                <p style="font-size: 1rem; line-height: 1.9;">「最近疲れやすい」「首のあたりが腫れている気がする」「動悸や体重の変化がある」といった症状はありませんか？これらは甲状腺の働きの変化や、小さなしこりが原因で起こることがあります。</p>
+                <p style="font-size: 1rem; line-height: 1.9; margin-top: 12px;">当院では、診療にあたり甲状腺超音波検査を実施しています。首元にゼリーを塗り、超音波のプローブをあてるだけで、放射線被ばくの心配もなく数分程度で安全に甲状腺の状態をチェックし、画像を見ながらその場で結果をご説明し、適切な治療へお繋ぎいたします。必要に応じて専門医療機関へご紹介も致しますので、気になる症状がある方は、どうぞ安心してお気軽にご相談ください。</p>
+            </div>
+
+            <div id="hinyouki" class="feature-detail-box" style="scroll-margin-top: 75px; padding: 24px; margin: 28px 0;">
+                <span class="feature-tag alt" style="font-size: 0.9rem; padding: 5px 14px;">泌尿器疾患</span>
+                <p style="font-size: 1rem; line-height: 1.9; margin: 14px 0 8px;"><strong>対応疾患：</strong>膀胱炎、膀胱腫瘍、前立腺肥大、前立腺腫瘍、排尿痛、頻尿、血尿</p>
+                <p style="font-size: 1rem; line-height: 1.9; margin-bottom: 14px;"><strong>主な検査：</strong>尿検査、血液検査および腹部・骨盤超音波検査（エコー）</p>
+                <p style="font-size: 1rem; line-height: 1.9;">「トイレが近い」「尿が出にくい・残る感じがする」「排尿時に痛みがある」「背中や腰が急に痛む」といったお悩みはありませんか？こうした症状の背景には、前立腺や膀胱、腎臓の変化が隠れていることがあります。</p>
+                <p style="font-size: 1rem; line-height: 1.9; margin-top: 12px;">また、健康診断や人間ドックで「尿潜血（血尿）」や「PSA（前立腺特異抗原の数値）が高い」と指摘されたことはありませんか？「症状がないから大丈夫」「どこを受診すればいいか分からない」と放置してしまうのは禁物です。これらは、体に隠れた病気からの大切なサインである可能性があります。</p>
+                <p style="font-size: 1rem; line-height: 1.9; margin-top: 12px;">当院では、必要に応じてエコー検査を実施しています。下腹部にゼリーを塗り、超音波のプローブをあてるだけで、放射線被ばくの心配もなく短時間で検査ができ、痛みを伴わずに原因を調べることができます。必要に応じて専門医療機関にご紹介いたします。気になる症状がある方は、まずは安心してお気軽にご相談ください。</p>
+                <p style="font-weight: bold; font-size: 0.95rem; color: var(--primary-navy); margin: 16px 0 10px;">【エコー検査でわかること】</p>
+                <ul class="feature-sub-list" style="font-size: 1rem; line-height: 1.7;">
+                    <li style="margin-bottom: 14px;"><strong>腎臓：</strong>結石の有無、腫れ（水腎症）の評価</li>
+                    <li style="margin-bottom: 14px;"><strong>膀胱・前立腺：</strong>前立腺の大きさ、腫瘍の有無</li>
+                </ul>
+            </div>
+
+            <div id="kokyuki" class="feature-detail-box" style="scroll-margin-top: 75px; padding: 24px; margin: 28px 0;">
+                <span class="feature-tag alt" style="font-size: 0.9rem; padding: 5px 14px;">アレルギー・呼吸器疾患</span>
+                <p style="font-size: 1rem; line-height: 1.9; margin-top: 14px;">気管支炎、喘息やアレルギーによる症状まで診療しています。症状や経過を丁寧にお伺いし、必要に応じて胸部レントゲンや呼吸機能検査などを行い原因や状態を確認します。また、アレルギーが疑われる場合には、48種類のアレルゲンを一度に調べられる血液検査にも対応しています。</p>
+                <p style="font-weight: bold; font-size: 0.95rem; color: var(--primary-navy); margin: 16px 0 10px;">【主な検査】</p>
+                <ul class="feature-sub-list" style="font-size: 1rem; line-height: 1.7;">
+                    <li style="margin-bottom: 14px;">胸部レントゲン検査、呼吸機能検査</li>
+                    <li style="margin-bottom: 14px;">血液検査、アレルギー検査（48種類のアレルゲン検査）</li>
+                </ul>
+            </div>
+
+            <div id="junkanki" class="feature-detail-box" style="scroll-margin-top: 75px; padding: 24px; margin: 28px 0;">
+                <span class="feature-tag" style="font-size: 0.9rem; padding: 5px 14px;">循環器疾患</span>
+                <p style="font-size: 1rem; line-height: 1.9; margin-top: 14px;">不整脈、頻脈などの脈の乱れや息切れ、胸の痛み、動悸に関する症状を診療しています。症状や経過を丁寧にお伺いし、必要に応じて心電図や24時間心電図を行い不整脈などの心臓の状態を確認します。</p>
+                <p style="font-weight: bold; font-size: 0.95rem; color: var(--primary-navy); margin: 16px 0 10px;">【主な検査】</p>
+                <ul class="feature-sub-list" style="font-size: 1rem; line-height: 1.7;">
+                    <li style="margin-bottom: 14px;">血液検査、心電図、24時間心電図</li>
+                </ul>
+            </div>
+
+            <div id="sonota" class="feature-detail-box" style="scroll-margin-top: 75px; padding: 24px; margin: 28px 0;">
+                <span class="feature-tag" style="font-size: 0.9rem; padding: 5px 14px;">その他の疾患</span>
+                <p style="font-weight: bold; font-size: 1rem; color: var(--primary-navy); margin: 16px 0 8px;">身体の不調に幅広く対応する健康の総合窓口</p>
+                <p style="font-size: 1rem; line-height: 1.9; margin-bottom: 14px;">何科に行けばよいかわからないという場合には、まずはご相談ください。必要に応じて適切な専門病院や診療科へ迅速にご紹介いたします。</p>
+                <ul class="feature-sub-list" style="font-size: 1rem; line-height: 1.7;">
+                    <li style="margin-bottom: 14px;"><strong>何科に受診したらよいのかわからない症状の初期診断：</strong>貧血、胸痛、頭痛、めまい、体調不良など</li>
+                </ul>
+            </div>
+        </section>
+
+        <div style="text-align: center; padding: 10px 20px 60px; display: flex; flex-direction: column; gap: 14px; align-items: center;">
+            <a href="診療内容.html" class="btn-premium-gold">診療案内一覧に戻る</a>
+            <a href="#" class="scroll-top-link">↑ トップへ</a>
+            <a href="index.html" class="btn-3d">トップページに戻る</a>
+        </div>
+
+        </main>
+
+        <footer class="footer">
+            <div style="margin-bottom: 20px;">
+                <img src="images/ロゴ_クローバー.png" alt="Yasunaga Clinic Logo" style="width: 120px; height: auto; object-fit: contain;">
+            </div>
+            &copy; Yasunaga Internal Medicine Clinic. All Rights Reserved.
+            <div class="footer-legal-links">
+                <a href="施設基準.html">施設基準について</a>
+                <a href="自費診療料金.html">自由診療料金のご案内</a>
+                <a href="プライバシーポリシー.html">プライバシーポリシー</a>
+            </div>
+        </footer>
+    </div>
+    <div class="fixed-call-bar">
+        <a href="tel:092-874-3433">
+            <svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                <path fill="#FF6B9D" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+            お電話でのご予約・お問い合わせ
+        </a>
+    </div>
+    <script src="script.js?v=9"></script>
+    <script>
+    // PC版ヘッダーの診療ステータス表示。判定ロジックは script.js のものをそのまま流用し、
+    // #clinic-status-summary の結果をヘッダーへ写すだけにして二重管理を避ける。
+    (function () {
+        var src = document.getElementById('clinic-status-summary');
+        var dst = document.getElementById('pcStatus');
+        if (!src || !dst) return;
+        var sync = function () {
+            var t = (src.textContent || '').trim();
+            if (!t || t === '読み込み中...') return;
+            dst.textContent = t;
+            dst.classList.toggle('is-open', !src.classList.contains('closed'));
+        };
+        document.addEventListener('DOMContentLoaded', function () { setTimeout(sync, 0); });
+        setInterval(sync, 10000);
+    })();
+    </script>
+</body>
+</html>

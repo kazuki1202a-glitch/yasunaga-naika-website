@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>超音波検査（エコー検査）のご案内 | やすなが内科クリニック</title>
+    <meta name="description" content="やすなが内科クリニックの超音波（エコー）検査のご案内。消化器病専門医が腹部・頸動脈・甲状腺エコーを丁寧に行います。痛みがなく短時間で受けられる検査です。">
+    <link rel="stylesheet" href="style.final.css?v=23">
+    <!-- PC専用レイアウト。中身はすべて @media (min-width:1024px) で囲まれているため、スマホ幅では1行も効きません -->
+    <link rel="stylesheet" href="style.pc.css?v=4">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/ロゴ_クローバー.png">
+    <link rel="apple-touch-icon" href="images/ロゴ_クローバー.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="やすなが内科クリニック">
+    <meta property="og:title" content="超音波検査（エコー検査）のご案内 | やすなが内科クリニック">
+    <meta property="og:description" content="やすなが内科クリニックの超音波（エコー）検査のご案内。消化器病専門医が腹部・頸動脈・甲状腺エコーを丁寧に行います。痛みがなく短時間で受けられる検査です。">
+    <meta property="og:url" content="https://yasunaga-naika.com/超音波検査.html">
+    <meta property="og:image" content="https://yasunaga-naika.com/images/ロゴ_クローバー.png">
+    <meta property="og:locale" content="ja_JP">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="超音波検査（エコー検査）のご案内 | やすなが内科クリニック">
+    <meta name="twitter:description" content="やすなが内科クリニックの超音波（エコー）検査のご案内。消化器病専門医が腹部・頸動脈・甲状腺エコーを丁寧に行います。痛みがなく短時間で受けられる検査です。">
+    <meta name="twitter:image" content="https://yasunaga-naika.com/images/ロゴ_クローバー.png">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="header-content">
+                <a class="pc-brand-link" href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; flex-grow: 1;">
+                    <img src="images/ロゴ_クローバー.png" alt="やすなが内科クリニック ロゴ" style="width: 65px; height: 65px; flex-shrink: 0; object-fit: contain;">
+                    <div class="name-container">
+                        <div class="clinic-name">やすなが内科クリニック</div>
+                        <div class="clinic-name-en">内科・消化器内科</div>
+                    </div>
+                </a>
+                <nav class="pc-nav pc-only" aria-label="メインメニュー">
+                    <a href="index.html">トップ</a>
+                    <a href="当院について.html">当院について</a>
+                    <a href="院長紹介.html">院長紹介</a>
+                    <a href="診療内容.html">診療案内</a>
+                    <a href="index.html#contact-area">アクセス</a>
+                </nav>
+                <div class="pc-contact pc-only">
+                    <span class="pc-status" id="pcStatus">診療時間をご確認ください</span>
+                    <a class="pc-tel" href="tel:092-874-3433">092-874-3433</a>
+                    <span class="pc-tel-note">受付 午前 9:00〜11:30 ／ 午後 14:00〜16:30</span>
+                </div>
+                <!-- 診療ステータスの判定ロジックは script.js のものをそのまま使いたいので、
+                     script.js が書き込む先の #clinic-status-summary を非表示で置いておく。
+                     （下層ページには診療時間カードが無いため） -->
+                <span id="clinic-status-summary" class="pc-status-source"></span>
+                <div class="menu-btn-container" id="menuBtn">
+                    <div class="menu-rect">
+                        <span class="menu-bar"></span>
+                        <span class="menu-bar"></span>
+                        <span class="menu-bar"></span>
+                    </div>
+                    <div class="menu-label">メニュー</div>
+                </div>
+            </div>
+        </header>
+        <div class="nav-overlay" id="navOverlay"></div>
+        <nav class="nav-drawer" id="navDrawer">
+            <div class="nav-drawer-header">
+                <span>メニュー</span>
+                <button class="nav-drawer-close" id="navDrawerClose" aria-label="閉じる">&times;</button>
+            </div>
+            <a href="index.html" class="nav-drawer-link">トップページ</a>
+            <a href="当院について.html" class="nav-drawer-link">当院について</a>
+            <a href="院長紹介.html" class="nav-drawer-link">院長紹介</a>
+            <a href="診療内容.html" class="nav-drawer-link">診療案内一覧</a>
+            <a href="index.html#contact-area" class="nav-drawer-link">アクセス・お問い合わせ</a>
+        </nav>
+
+        <main class="pc-main">
+
+        <!-- Page Banner -->
+        <div style="padding: 15px 15px 0;">
+            <img src="images/超音波検査_v3.png" alt="超音波検査" style="width: 100%; border-radius: 12px; display: block; box-shadow: 0 10px 25px rgba(0,0,0,0.08);">
+        </div>
+
+        <div style="padding: 24px 20px 0; text-align: center;">
+            <p style="font-size: 1.05rem; line-height: 1.9; font-weight: bold; color: var(--primary-navy);">さまざまな臓器や部位をその場で確認できる超音波検査で、日々の健康を見守ります</p>
+            <p style="font-size: 1.05rem; line-height: 1.9; margin-top: 12px; text-align: justify;">超音波検査は、症状があるときだけでなく、生活習慣病などの経過観察や健診・予防のための定期的な健康チェックにも適しています。当院では、幅広い範囲の部位の検査に対応し、地域の皆さまの健康維持をサポートいたします。</p>
+        </div>
+
+        <!-- 目次 -->
+        <nav class="page-toc">
+            <a href="#about" class="toc-link">検査とは</a>
+            <a href="#anshin" class="toc-link">3つの安心</a>
+            <a href="#tokucho" class="toc-link">当院の特徴</a>
+            <a href="#wakaru" class="toc-link">わかること</a>
+            <a href="#taisho" class="toc-link">対象の方</a>
+            <a href="#faq" class="toc-link">よくある質問</a>
+            <a href="#message" class="toc-link">メッセージ</a>
+        </nav>
+
+        <!-- 超音波検査とはどんな検査？ -->
+        <section id="about" class="about-photo-section" style="scroll-margin-top: 75px;">
+            <div class="section-title-wrapper">
+                <h2 class="section-title">超音波検査とはどんな検査？</h2>
+            </div>
+            <p style="font-size: 1.05rem; line-height: 1.95; margin-top: 20px;">超音波検査（エコー検査）は、人間の耳には聞こえない高い周波数の音（超音波）を体に当て、その跳ね返ってきた「音の響き」を映像化して、体の中の様子をリアルタイムで観察する検査です。やまびこが壁に当たって戻ってくるのと同じ原理を利用しているため「エコー」とも呼ばれます。</p>
+        </section>
+
+        <!-- 3つの安心 -->
+        <section id="anshin" class="about-photo-section" style="scroll-margin-top: 75px;">
+            <div class="section-title-wrapper">
+                <h2 class="section-title">誰もが安心して受けられる<br>「3つの安心」</h2>
+            </div>
+
+            <div class="feature-detail-box" style="padding: 24px; margin: 28px 0;">
+                <span class="feature-tag" style="font-size: 0.9rem; padding: 5px 14px;">① 身体に優しい検査</span>
+                <ul class="feature-sub-list" style="font-size: 1rem; line-height: 1.8; margin-top: 14px;">
+                    <li style="margin-bottom: 14px;">放射線を使わないので、定期的な健康チェックに適した検査です。</li>
+                    <li style="margin-bottom: 14px;">短期間に何度も繰り返し検査を行うことができるため、高齢の方でも安心して受けていただけます。</li>
+                </ul>
+            </div>
+
+            <div class="feature-detail-box" style="padding: 24px; margin: 28px 0;">
+                <span class="feature-tag alt" style="font-size: 0.9rem; padding: 5px 14px;">② その場で確認・説明</span>
+                <ul class="feature-sub-list" style="font-size: 1rem; line-height: 1.8; margin-top: 14px;">
+                    <li style="margin-bottom: 14px;">臓器の様子や血流をリアルタイムで確認しながら診察を行います。</li>
+                    <li style="margin-bottom: 14px;">検査直後、その場で患者さまに画像をご覧いただきながら結果をご説明いたします。</li>
+                </ul>
+            </div>
+
+            <div class="feature-detail-box" style="padding: 24px; margin: 28px 0;">
+                <span class="feature-tag" style="font-size: 0.9rem; padding: 5px 14px;">③ 短時間</span>
+                <ul class="feature-sub-list" style="font-size: 1rem; line-height: 1.8; margin-top: 14px;">
+                    <li style="margin-bottom: 14px;">服を着替える必要がなく、準備を含めても15分から20分程度で受けられる、比較的短時間の検査です。</li>
+                    <li style="margin-bottom: 14px;">お体の負担に配慮しながら、スムーズに検査を行います。定期通院の際にも受けていただきやすく、高齢の方にも配慮した検査です。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 当院の超音波検査の特徴 -->
+        <section id="tokucho" class="about-photo-section" style="scroll-margin-top: 75px;">
+            <div class="section-title-wrapper">
+                <h2 class="section-title">当院の超音波検査の特徴</h2>
+            </div>
+
+            <div class="feature-detail-box" style="padding: 24px; margin: 28px 0;">
+                <span class="feature-tag" style="font-size: 0.9rem; padding: 5px 14px;">1. 首から下腹部まで「幅広い部位」に対応</span>
+                <p style="font-size: 1rem; line-height: 1.9; margin-top: 14px;">お腹（肝臓・胆のう・膵臓・腎臓）はもちろん、首（頸動脈・甲状腺）、下腹部（膀胱・前立腺・子宮・卵巣）まで、様々な部位に対応しています。</p>
+            </div>
+
+            <div class="feature-detail-box" style="padding: 24px; margin: 28px 0;">
+                <span class="feature-tag alt" style="font-size: 0.9rem; padding: 5px 14px;">2. 消化器病専門医による専門的な観察</span>
+                <p style="font-size: 1rem; line-height: 1.9; margin-top: 14px;">長年の臨床経験と専門知識を持つ、消化器病専門医が検査を行います。慢性疾患の経過観察はもちろん健康状態を確認するための検査など、症状や目的に応じて丁寧に検査を行います。</p>
+            </div>
+
+            <div class="feature-detail-box" style="padding: 24px; margin: 28px 0;">
+                <span class="feature-tag" style="font-size: 0.9rem; padding: 5px 14px;">3. 専門医療機関へのスムーズな紹介体制</span>
+                <p style="font-size: 1rem; line-height: 1.9; margin-top: 14px;">検査の結果、より高度な精密検査や治療が必要と判断した場合は、地域の基幹病院や専門医療機関へご紹介します。まずは当院で診療・検査を行い、必要に応じて適切な医療機関につなげる体制を整えています。</p>
+            </div>
+        </section>
+
+        <!-- 超音波検査でわかること -->
+        <section id="wakaru" class="about-photo-section" style="scroll-margin-top: 75px;">
+            <div class="section-title-wrapper">
+                <h2 class="section-title">超音波検査でわかること</h2>
+            </div>
+            <p style="font-size: 1.05rem; line-height: 1.95; margin-top: 20px;">「沈黙の臓器」とも呼ばれる肝臓などの状態や、頸動脈の動脈硬化の程度などを確認することができます。自覚症状がない段階で異常が見つかることもあり、疾患の早期発見・早期治療につながります。</p>
+
+            <div class="feature-detail-box" style="padding: 24px; margin: 28px 0;">
+                <span class="feature-tag" style="font-size: 0.9rem; padding: 5px 14px;">1. 腹部エコー：「沈黙の臓器」のチェック</span>
+                <ul class="feature-sub-list" style="font-size: 1rem; line-height: 1.8; margin-top: 14px;">
+                    <li style="margin-bottom: 12px;"><strong>肝臓：</strong>脂肪肝、肝硬変、腫瘍</li>
+                    <li style="margin-bottom: 12px;"><strong>胆のう：</strong>胆石、ポリープ</li>
+                    <li style="margin-bottom: 12px;"><strong>膵臓：</strong>膵炎、腫瘍</li>
+                    <li style="margin-bottom: 12px;"><strong>腎臓：</strong>結石、嚢胞</li>
+                </ul>
+                <p style="font-weight: bold; font-size: 0.95rem; color: var(--primary-navy); margin: 18px 0 8px;">排尿のお悩み・下腹部チェック</p>
+                <ul class="feature-sub-list" style="font-size: 1rem; line-height: 1.8;">
+                    <li style="margin-bottom: 12px;"><strong>前立腺：</strong>肥大、腫瘍</li>
+                    <li style="margin-bottom: 12px;"><strong>膀胱：</strong>結石、腫瘍</li>
+                    <li style="margin-bottom: 12px;"><strong>卵巣：</strong>嚢腫、腫瘍</li>
+                    <li style="margin-bottom: 12px;"><strong>子宮：</strong>筋腫・腫瘍</li>
+                </ul>
+                <p style="font-size: 0.85rem; line-height: 1.7; color: #777; margin-top: 14px;">※上記は代表的な所見の一例です。</p>
+            </div>
+
+            <div class="feature-detail-box" style="padding: 24px; margin: 28px 0;">
+                <span class="feature-tag alt" style="font-size: 0.9rem; padding: 5px 14px;">2. 頸動脈エコー：血管の状態を「見える化」</span>
+                <p style="font-size: 1rem; line-height: 1.9; margin-top: 14px;">血管の壁の厚さやプラークの状態を確認し、動脈硬化の程度を評価します。脳梗塞や心筋梗塞のリスクを考える上での参考となる検査です。</p>
+            </div>
+
+            <div class="feature-detail-box" style="padding: 24px; margin: 28px 0;">
+                <span class="feature-tag" style="font-size: 0.9rem; padding: 5px 14px;">3. 甲状腺エコー</span>
+                <p style="font-size: 1rem; line-height: 1.9; margin-top: 14px;">しこり（結節・腫瘍）の有無、甲状腺の腫れ、質感の変化、血流の状態を確認します。</p>
+            </div>
+
+            <div style="background: #F9F8F2; border-radius: 10px; padding: 20px 22px; margin-top: 20px;">
+                <p style="font-size: 0.95rem; line-height: 1.85; color: #444;">※肺・胃・腸などの空気が入る臓器の診断や評価には適しません。内視鏡やCT、MRIなどの検査が必要な場合は、速やかに地域の基幹病院等にご紹介いたします。</p>
+            </div>
+        </section>
+
+        <!-- 対象の方 -->
+        <section id="taisho" class="about-photo-section" style="scroll-margin-top: 75px;">
+            <div class="section-title-wrapper">
+                <h2 class="section-title">超音波検査をおすすめする方</h2>
+            </div>
+
+            <div class="feature-detail-box" style="padding: 24px; margin: 28px 0;">
+                <span class="feature-tag" style="font-size: 0.9rem; padding: 5px 14px;">生活習慣病と診断され、定期的に経過を確認したい方</span>
+                <p style="font-size: 1rem; line-height: 1.9; margin-top: 14px;">生活習慣病はサイレントキラーとも呼ばれるため、エコー検査による定期的な「見える化」は、重症化予防や健康寿命を延ばすことにつながります。</p>
+            </div>
+
+            <div class="feature-detail-box" style="padding: 24px; margin: 28px 0;">
+                <span class="feature-tag alt" style="font-size: 0.9rem; padding: 5px 14px;">健康診断や血液検査で再検査や要精密検査になった方</span>
+                <ul class="feature-sub-list" style="font-size: 1rem; line-height: 1.8; margin-top: 14px;">
+                    <li style="margin-bottom: 12px;">血糖値やコレステロール、血圧の異常を指摘された方</li>
+                    <li style="margin-bottom: 12px;">甲状腺腫大と言われた方</li>
+                    <li style="margin-bottom: 12px;">肝機能、膵機能、腎機能の数値が高い方</li>
+                    <li style="margin-bottom: 12px;">脂肪肝、胆のうポリープ、胆石と言われた方</li>
+                    <li style="margin-bottom: 12px;">尿検査で「糖、タンパク、潜血」が出た方</li>
+                </ul>
+            </div>
+
+            <div class="feature-detail-box" style="padding: 24px; margin: 28px 0;">
+                <span class="feature-tag" style="font-size: 0.9rem; padding: 5px 14px;">気になるお腹や体の症状がある方</span>
+                <ul class="feature-sub-list" style="font-size: 1rem; line-height: 1.8; margin-top: 14px;">
+                    <li style="margin-bottom: 12px;">首に腫れやしこり、違和感がある</li>
+                    <li style="margin-bottom: 12px;">腹痛や背中に違和感がある</li>
+                    <li style="margin-bottom: 12px;">排尿痛、頻尿、血尿がある　など</li>
+                </ul>
+            </div>
+
+            <ul class="feature-sub-list" style="font-size: 1.05rem; line-height: 2;">
+                <li style="margin-bottom: 16px;">肝臓・胆のう・膵臓などの状態を確認したい方</li>
+                <li style="margin-bottom: 16px;">前立腺・膀胱など、泌尿器の状態が気になる方</li>
+                <li style="margin-bottom: 16px;">症状がなくても、定期的に健康状態をチェックしたい方</li>
+            </ul>
+        </section>
+
+        <!-- よくある質問 -->
+        <section id="faq" class="about-photo-section" style="scroll-margin-top: 75px;">
+            <div class="section-title-wrapper">
+                <h2 class="section-title">よくある質問</h2>
+            </div>
+
+            <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 14px;">
+                <details class="faq-item">
+                    <summary class="faq-question">Q. 検査は痛いですか？</summary>
+                    <p class="faq-answer"><strong>A. 痛みのない優しい検査です。</strong><br>ゼリーを塗って表面を滑らせるようにプローブ（探触子）を当てるだけですので、痛みはありません。<br>※部位によって詳細な観察をするため、ゼリーを当てた部分を少し押さえる場合があります。痛みを感じた場合は、我慢せず遠慮なくお伝えください。</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">Q. 当日の服薬は止める必要がありますか？</summary>
+                    <p class="faq-answer"><strong>A. 原則として、お薬は通常通り服用していただいて構いません。</strong><br>高血圧症や心臓病などの持続してお飲みいただくお薬は、少量の水で普段通り服用してください。予約時にご説明いたしますが、ご不安な場合はスタッフにご相談ください。</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">Q. 健康保険は使えますか？</summary>
+                    <p class="faq-answer"><strong>A. 医師が診療・診断のために必要と判断した場合は、健康保険が適用されます。</strong><br>症状があり、医師の指示で検査を行う場合は保険適用となります。受診の際は必ずマイナ保険証または健康保険証をお持ちください。<br>※症状がない場合の健康診断目的での受診は、自費診療（全額自己負担）となります。</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">Q. 食事制限はありますか？</summary>
+                    <p class="faq-answer"><strong>A. 血液検査が必要かどうか、血液検査の内容等で制限内容が変わりますので、事前に看護師よりご説明申し上げます。</strong><br>※当院では、特にご高齢の患者さまには、お身体への負担や体調変化に配慮し、「検査の3時間前までに、ごく軽めの食事」をおすすめしております。完全な絶食による体調不良（低血圧や貧血、気分不快など）を防ぎ、安心して受診していただけるよう配慮した取り組みです。<br>患者さまの持病や体調に合わせた具体的な注意事項は、事前に看護師より丁寧にご説明いたします。ご不明な点はお気軽にご相談ください。</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">Q. 定期的に受けるべきですか？</summary>
+                    <p class="faq-answer"><strong>A. 状態や持病に応じて、定期的な受診をおすすめしています。</strong><br>超音波検査は身体に負担がないため、経過観察に適しています。特に肝臓や胆のうの持病、生活習慣病をお持ちの方、あるいは過去に「経過観察」と診断された方は、血液、尿検査とともに定期的に（半年に1回～年に1回）検査されることをお勧めします。気になる症状がある場合や、前回の検査から期間が空いている場合は、お気軽に医師にご相談ください。</p>
+                </details>
+            </div>
+        </section>
+
+        <!-- 患者さまへメッセージ -->
+        <section id="message" class="about-photo-section" style="scroll-margin-top: 75px;">
+            <div class="section-title-wrapper">
+                <h2 class="section-title">患者さまへメッセージ</h2>
+            </div>
+            <div class="feature-detail-box" style="padding: 24px; margin: 28px 0 0;">
+                <p style="font-size: 1.05rem; line-height: 2;">ちょっと気になることがあるけれど、忙しいし、面倒だし、まだ我慢できるからと後回しにされていませんか。</p>
+                <p style="font-size: 1.05rem; line-height: 2; margin-top: 14px;">診察して、問題なければご安心いただけますし、万が一何か見つかっても早期発見・早期対応が何よりの安心につながります。</p>
+                <p style="font-size: 1.05rem; line-height: 2; margin-top: 14px;">また、毎日の生活習慣を整え、内臓や血管の今の状態を知り、健康管理していくことで、未来の健康状態を守ることにつながります。</p>
+                <p style="font-size: 1.05rem; line-height: 2; margin-top: 14px;">大がかりな準備は不要です。「今」の状態を知るために、どうぞお気軽にご相談ください。</p>
+            </div>
+        </section>
+
+        <div style="text-align: center; padding: 10px 20px 60px;">
+            <a href="#" class="scroll-top-link">↑ トップへ</a>
+            <a href="index.html" class="btn-3d">トップページに戻る</a>
+        </div>
+
+        </main>
+
+        <footer class="footer">
+            <div style="margin-bottom: 20px;">
+                <img src="images/ロゴ_クローバー.png" alt="Yasunaga Clinic Logo" style="width: 120px; height: auto; object-fit: contain;">
+            </div>
+            &copy; Yasunaga Internal Medicine Clinic. All Rights Reserved.
+            <div class="footer-legal-links">
+                <a href="施設基準.html">施設基準について</a>
+                <a href="自費診療料金.html">自由診療料金のご案内</a>
+                <a href="プライバシーポリシー.html">プライバシーポリシー</a>
+            </div>
+        </footer>
+    </div>
+    <div class="fixed-call-bar">
+        <a href="tel:092-874-3433">
+            <svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                <path fill="#FF6B9D" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+            お電話でのご予約・お問い合わせ
+        </a>
+    </div>
+    <script src="script.js?v=9"></script>
+    <script>
+    // PC版ヘッダーの診療ステータス表示。判定ロジックは script.js のものをそのまま流用し、
+    // #clinic-status-summary の結果をヘッダーへ写すだけにして二重管理を避ける。
+    (function () {
+        var src = document.getElementById('clinic-status-summary');
+        var dst = document.getElementById('pcStatus');
+        if (!src || !dst) return;
+        var sync = function () {
+            var t = (src.textContent || '').trim();
+            if (!t || t === '読み込み中...') return;
+            dst.textContent = t;
+            dst.classList.toggle('is-open', !src.classList.contains('closed'));
+        };
+        document.addEventListener('DOMContentLoaded', function () { setTimeout(sync, 0); });
+        setInterval(sync, 10000);
+    })();
+    </script>
+</body>
+</html>

@@ -16,6 +16,11 @@
 /* PC専用要素は既定で非表示（index.html には存在しない要素なので既存に影響なし） */
 .pc-only { display: none; }
 
+/* 下層ページには診療時間カードが無いため、script.js に診療ステータスを書かせるだけの
+   受け皿として #clinic-status-summary を置いている。画面には一切出さない。
+   （判定ロジックを PC版で二重実装しないための仕掛け） */
+.pc-status-source { display: none !important; }
+
 @media (min-width: 1024px) {
 
     /* ページ内アンカー（#contact-area 等）へ飛んだとき、
@@ -401,4 +406,219 @@
 
     /* ---------- フッター ---------- */
     .footer { padding: 64px 40px; }
+
+    /* ============================================================
+       ここから下は「下層14ページ共通」のPCレイアウト
+       （2026-09-14 追加。トップページには .pc-main が無いので影響しない）
+       ------------------------------------------------------------
+       考え方：
+       ・スマホ用HTMLをPCで開くと、本文が1280px幅いっぱいに広がって
+         1行100文字超になる＝「スマホの拡大表示」の正体はほぼこれ。
+       ・そこで <main class="pc-main"> の直下要素を既定860pxの
+         読み物カラムに閉じ込め、写真ギャラリー・カードグリッドだけ
+         .pc-wide で外側（最大1080px）まで開放する、という2段構えにした。
+       ・.pc-main > * とワイルドカードで当てているのは、既存HTMLの直下要素が
+         section / div / nav と混在しており、要素名を列挙すると
+         ページ追加時に取りこぼすため（取りこぼし＝そのページだけ全幅で崩れる）。
+       ============================================================ */
+
+    .pc-main {
+        max-width: 1160px;
+        margin: 0 auto;
+        padding: 0 40px;
+    }
+
+    /* 既定：読み物カラム。日本語18pxで約45文字/行に収まる幅 */
+    .pc-main > * {
+        max-width: 860px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* 写真ギャラリー・カードグリッドなど、横に広げたい区画だけ開放する */
+    .pc-main > .pc-wide { max-width: 100%; }
+
+    /* 既存HTMLの inline padding（20px前後の左右余白）はカラム幅で担保するため打ち消す。
+       inline style が相手なので !important が必要。
+       ただし .about-intro-card のように「それ自体が枠付きの箱」になっている直下要素は、
+       打ち消すと文字が枠にぶつかるので除外する。
+       （除外対象は audit_children.py で機械的に洗い出したもの：
+         全14ページ中、直下要素で装飾された箱は .about-intro-card だけ） */
+    .pc-main > *:not(.about-intro-card) {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    /* 固定ヘッダー分は html の scroll-padding-top (120px) で確保済み。
+       既存HTMLの inline scroll-margin-top:75px が加算されると
+       アンカー移動時に見出しが画面のかなり下に来てしまうので打ち消す。 */
+    .pc-main [style*="scroll-margin-top"] { scroll-margin-top: 0 !important; }
+
+    /* キーボード操作時のフォーカス位置が分かるようにする（PCで初めて意味を持つ） */
+    .pc-nav a:focus-visible,
+    .pc-main a:focus-visible,
+    .pc-main summary:focus-visible {
+        outline: 2px solid var(--accent-olive);
+        outline-offset: 3px;
+        border-radius: 4px;
+    }
+
+    /* ---------- 下層ページのヘッダー ---------- */
+    /* 本番HTMLではロゴ＋医院名のリンクが flex-grow:1 で横幅を食い尽くすため、
+       そのままだとPCナビが右端に押し出されて窮屈になる */
+    .pc-brand-link { flex-grow: 0 !important; }
+
+    /* ---------- 目次（.page-toc） ---------- */
+    .pc-main .page-toc {
+        gap: 12px;
+        padding: 28px 0 0;
+        max-width: 860px;
+        margin: 0 auto;
+    }
+
+    .pc-main .toc-link {
+        flex: 0 1 auto;
+        min-width: 150px;
+        max-width: 240px;
+        padding: 14px 20px;
+        font-size: 0.9rem;
+        border-radius: 8px;
+        transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+
+    .pc-main .toc-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(15, 23, 42, 0.10);
+        border-color: var(--accent-olive);
+    }
+
+    /* スマホでは「縦2列・列方向に読む」配置だが、PCは3列に広げて素直な読み順にする */
+    .pc-main .toc-grid-2col {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+        grid-auto-flow: row;
+    }
+
+    /* ---------- 本文セクションの余白 ---------- */
+    .pc-main > section { padding-top: 24px !important; padding-bottom: 48px !important; }
+    .pc-main > section:first-of-type { padding-top: 8px !important; }
+
+    /* ページ先頭のバナー画像。トリミングすると図版入りバナー（市の健診など）の
+       情報が欠けるので、幅を読み物カラムに揃えるだけにして切らない。 */
+    .pc-main > div:first-child img { border-radius: 12px; }
+
+    /* ---------- 共通パーツの拡大 ---------- */
+    .pc-main .feature-detail-box {
+        padding: 28px 32px !important;
+        margin: 28px 0 !important;
+        border-radius: 4px 12px 12px 4px;
+    }
+
+    .pc-main .feature-tag { font-size: 0.85rem !important; padding: 5px 16px !important; }
+
+    /* 箱の最後の段落の下マージンが余白として二重に効き、中身が上寄りに見えるのを防ぐ */
+    .pc-main .feature-detail-box > p:last-child,
+    .pc-main .feature-detail-box > ul:last-child { margin-bottom: 0; }
+
+    .pc-main .faq-item { padding: 24px 28px; }
+    .pc-main .faq-question { font-size: 1.1rem; }
+
+    .pc-main .about-intro-card { padding: 40px 48px; border-radius: 12px; }
+    .pc-main .about-intro-title { font-size: 1.35rem; }
+
+    .pc-main .about-intro-actions {
+        flex-direction: row;
+        justify-content: center;
+        gap: 16px;
+    }
+
+    /* 「↑トップへ」＋「トップページに戻る」の並び */
+    .pc-main > div:last-child { padding-bottom: 64px !important; }
+
+    /* ---------- 当院について：特徴01〜05をカードとして見せる ---------- */
+    .pc-main .feature-item {
+        background: #fff;
+        border: 1px solid rgba(139, 139, 94, 0.22);
+        border-radius: 8px;
+        padding: 40px !important;
+        margin-bottom: 32px;
+        box-shadow: 0 4px 16px rgba(15, 23, 42, 0.07);
+    }
+
+    .pc-main .feature-item:last-child { margin-bottom: 0; }
+
+    /* ---------- 当院について：院内設備（写真＋説明を左右に） ---------- */
+    /* :has が使えないブラウザでは縦積みのまま。その場合でも写真だけが
+       1000px超に引き伸ばされないよう、先に上限を掛けておく。 */
+    .pc-wide .equipment-photo-item { max-width: 1000px; margin: 0 auto 32px; }
+    .pc-wide .equipment-photo-item .about-photo { max-width: 420px; }
+
+    /* 機器写真は縦長（689x800）で説明文が短いものが多い。
+       画像の幅を広く取ると縦に伸びて右側が空くだけなので、300pxに抑えている。
+       写真の下端に機器名が焼き込まれているものがあるため、object-fit でのトリミングはしない。 */
+    .pc-wide .equipment-photo-item:has(> img) {
+        display: grid;
+        grid-template-columns: 300px minmax(0, 1fr);
+        gap: 32px;
+        align-items: center;
+    }
+
+    .pc-wide .equipment-photo-item:has(> img) .about-photo { max-width: 100%; }
+    .pc-wide .equipment-photo-item:has(> img) .equipment-item-desc { margin-top: 0; }
+
+    /* 写真の無い項目（経皮的動脈血酸素飽和度測定器）は読み物カラムに揃える */
+    .pc-wide .equipment-photo-item:not(:has(> img)) { max-width: 860px; }
+
+    .pc-wide .ventilation-section,
+    .pc-wide > h3 { max-width: 1000px; margin-left: auto; margin-right: auto; }
+
+    .pc-wide .ventilation-section > h3 { font-size: 1.25rem; margin-bottom: 24px; }
+
+    /* ---------- 当院について：施設のご紹介（写真8枚） ---------- */
+    .pc-wide .about-photo-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        margin: 0 !important;
+    }
+
+    .pc-wide .about-photo-grid .about-photo {
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        box-shadow: 0 4px 16px rgba(15, 23, 42, 0.07);
+    }
+
+    /* 読み物カラム内の2枚組（外観＋周辺地図）は引き伸ばさない */
+    .pc-main .feature-item .about-photo-grid { gap: 24px; }
+
+    /* ---------- 診療内容：カード一覧 ---------- */
+    .pc-services .services-grid { padding: 0 !important; max-width: 100%; }
+
+    /* ---------- 院長紹介・各診療ページの見出し ---------- */
+    .pc-main .greeting-subheading { font-size: 1.15rem; }
+    .pc-main h3 { line-height: 1.7; }
+
+    /* ---------- 料金表など ---------- */
+    .pc-main table { font-size: 1rem !important; }
+    .pc-main table td { padding: 12px 8px !important; }
+}
+
+/* ------------------------------------------------------------
+   1024〜1199px（小さめのノートPC）。
+   ヘッダーの要素数が多く、この幅だとナビと電話番号がぶつかるので
+   一段だけ詰める。1200px以上では上のスタイルがそのまま効く。
+   ------------------------------------------------------------ */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .main-header { padding: 10px 20px; }
+    .header-content { gap: 12px; }
+    .pc-nav a { padding: 10px 8px; font-size: 0.82rem; }
+    .pc-contact { padding-left: 16px; }
+    .pc-tel { font-size: 1.3rem; }
+    .pc-tel-note { font-size: 0.62rem; }
+    .clinic-name { font-size: 1.1rem; }
+    .clinic-name-en { font-size: 0.72rem; }
+    .header-content img { width: 48px !important; height: 48px !important; }
+
+    .pc-main { padding: 0 24px; }
+    .pc-wide .equipment-photo-item:has(> img) { grid-template-columns: 280px minmax(0, 1fr); }
+    .pc-wide .about-photo-grid { grid-template-columns: repeat(3, 1fr); }
 }

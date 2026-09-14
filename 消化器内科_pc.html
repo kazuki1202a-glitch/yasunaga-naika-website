@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>消化器内科 | やすなが内科クリニック</title>
+    <meta name="description" content="やすなが内科クリニックの消化器内科のご案内。腹痛・胃もたれ・胸やけなどの症状から、幅広い超音波検査、ヘリコバクターピロリ検査まで対応しています。">
+    <link rel="stylesheet" href="style.final.css?v=23">
+    <!-- PC専用レイアウト。中身はすべて @media (min-width:1024px) で囲まれているため、スマホ幅では1行も効きません -->
+    <link rel="stylesheet" href="style.pc.css?v=4">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/ロゴ_クローバー.png">
+    <link rel="apple-touch-icon" href="images/ロゴ_クローバー.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="やすなが内科クリニック">
+    <meta property="og:title" content="消化器内科 | やすなが内科クリニック">
+    <meta property="og:description" content="やすなが内科クリニックの消化器内科のご案内。腹痛・胃もたれ・胸やけなどの症状から、幅広い超音波検査、ヘリコバクターピロリ検査まで対応しています。">
+    <meta property="og:url" content="https://yasunaga-naika.com/消化器内科.html">
+    <meta property="og:image" content="https://yasunaga-naika.com/images/ロゴ_クローバー.png">
+    <meta property="og:locale" content="ja_JP">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="消化器内科 | やすなが内科クリニック">
+    <meta name="twitter:description" content="やすなが内科クリニックの消化器内科のご案内。腹痛・胃もたれ・胸やけなどの症状から、幅広い超音波検査、ヘリコバクターピロリ検査まで対応しています。">
+    <meta name="twitter:image" content="https://yasunaga-naika.com/images/ロゴ_クローバー.png">
+</head>
+<body>
+    <div class="container">
+        <header class="main-header">
+            <div class="header-content">
+                <a class="pc-brand-link" href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; flex-grow: 1;">
+                    <img src="images/ロゴ_クローバー.png" alt="やすなが内科クリニック ロゴ" style="width: 65px; height: 65px; flex-shrink: 0; object-fit: contain;">
+                    <div class="name-container">
+                        <div class="clinic-name">やすなが内科クリニック</div>
+                        <div class="clinic-name-en">内科・消化器内科</div>
+                    </div>
+                </a>
+                <nav class="pc-nav pc-only" aria-label="メインメニュー">
+                    <a href="index.html">トップ</a>
+                    <a href="当院について.html">当院について</a>
+                    <a href="院長紹介.html">院長紹介</a>
+                    <a href="診療内容.html">診療案内</a>
+                    <a href="index.html#contact-area">アクセス</a>
+                </nav>
+                <div class="pc-contact pc-only">
+                    <span class="pc-status" id="pcStatus">診療時間をご確認ください</span>
+                    <a class="pc-tel" href="tel:092-874-3433">092-874-3433</a>
+                    <span class="pc-tel-note">受付 午前 9:00〜11:30 ／ 午後 14:00〜16:30</span>
+                </div>
+                <!-- 診療ステータスの判定ロジックは script.js のものをそのまま使いたいので、
+                     script.js が書き込む先の #clinic-status-summary を非表示で置いておく。
+                     （下層ページには診療時間カードが無いため） -->
+                <span id="clinic-status-summary" class="pc-status-source"></span>
+                <div class="menu-btn-container" id="menuBtn">
+                    <div class="menu-rect">
+                        <span class="menu-bar"></span>
+                        <span class="menu-bar"></span>
+                        <span class="menu-bar"></span>
+                    </div>
+                    <div class="menu-label">メニュー</div>
+                </div>
+            </div>
+        </header>
+        <div class="nav-overlay" id="navOverlay"></div>
+        <nav class="nav-drawer" id="navDrawer">
+            <div class="nav-drawer-header">
+                <span>メニュー</span>
+                <button class="nav-drawer-close" id="navDrawerClose" aria-label="閉じる">&times;</button>
+            </div>
+            <a href="index.html" class="nav-drawer-link">トップページ</a>
+            <a href="当院について.html" class="nav-drawer-link">当院について</a>
+            <a href="院長紹介.html" class="nav-drawer-link">院長紹介</a>
+            <a href="診療内容.html" class="nav-drawer-link">診療案内一覧</a>
+            <a href="index.html#contact-area" class="nav-drawer-link">アクセス・お問い合わせ</a>
+        </nav>
+
+        <main class="pc-main">
+
+        <div style="padding: 15px 15px 0;">
+            <img src="images/消化器内科_v4.jpg" alt="消化器内科" style="width: 100%; border-radius: 12px; display: block; box-shadow: 0 10px 25px rgba(0,0,0,0.08);">
+        </div>
+
+        <section class="about-photo-section">
+            <p style="font-size: 1.05rem; line-height: 1.95; margin-top: 20px;">腹痛、胃もたれ、胸やけ、食欲不振、腹部膨満感、便秘など日常よくある症状に対応いたします。また、下痢と便秘を繰り返す過敏性腸症候群、慢性胃炎、逆流性食道炎、膵炎、胆石、肝機能障害などの治療、経過観察にも対応しています。長年の経験を生かした服薬指導を行い、お一人おひとりの生活、環境、食生活を含めて生活習慣の改善に向け一緒に考えてまいります。また、服薬指導以外に、治療および管理上必要な方には、定期的に腹部超音波検査と精密血液検査を組み合わせ、自覚症状の少ない肝臓、胆のう、すい臓など臓器の微細な変化を丁寧に検査・診断し経過観察を行っています。</p>
+
+            <div id="kanzou" class="feature-detail-box" style="padding: 24px; margin: 28px 0; scroll-margin-top: 75px;">
+                <span class="feature-tag" style="font-size: 0.9rem; padding: 5px 14px;">肝機能の異常や肝臓・胆のうの病変を指摘された方へ</span>
+                <p style="font-size: 1rem; line-height: 1.9; margin-top: 14px;">肝臓は病気があっても自覚症状が現れにくい臓器です。症状がなくても、検査で異常を指摘された場合には、その原因や状態を確認することが大切です。胆石や胆のうポリープも自覚症状のないまま健診で見つかることが多い一方、胆石により右上腹部やみぞおちに痛みが出ることもあります。</p>
+
+                <p style="font-weight: bold; font-size: 0.95rem; color: var(--primary-navy); margin: 18px 0 8px;">【肝機能異常（AST・ALT・γ-GTPなどの数値が高い）】</p>
+                <ul class="feature-sub-list" style="font-size: 1rem; line-height: 1.8;">
+                    <li style="margin-bottom: 10px;">肝臓の細胞が壊れて、血液中に酵素が漏れ出している状態です（脂肪肝、過度のお酒、ウイルス感染、薬の副作用などが主な原因）。肝臓は「沈黙の臓器」と呼ばれ、初期はほとんど痛みがありません。</li>
+                </ul>
+
+                <p style="font-weight: bold; font-size: 0.95rem; color: var(--primary-navy); margin: 18px 0 8px;">【肝臓の腫瘤（しこり）】</p>
+                <ul class="feature-sub-list" style="font-size: 1rem; line-height: 1.8;">
+                    <li style="margin-bottom: 10px;">画像検査（エコーなど）で、肝臓の中に周りと異なる「かたまり」が見つかった状態です。多くは良性のもの（血管腫や嚢胞など）ですが、経過観察か治療が必要かそれとも更に詳しい検査が必要かの確認が必要です。</li>
+                </ul>
+
+                <p style="font-weight: bold; font-size: 0.95rem; color: var(--primary-navy); margin: 18px 0 8px;">【胆石（胆嚢結石）】</p>
+                <ul class="feature-sub-list" style="font-size: 1rem; line-height: 1.8;">
+                    <li style="margin-bottom: 10px;">胆汁（消化液）成分が固まり、胆嚢（たんのう）の中に石ができている状態です。症状がない場合も多いですが、石が胆嚢の出口に引っかかりやすい状態にあります。</li>
+                </ul>
+
+                <p style="font-weight: bold; font-size: 0.95rem; color: var(--primary-navy); margin: 18px 0 8px;">【胆嚢ポリープ】</p>
+                <ul class="feature-sub-list" style="font-size: 1rem; line-height: 1.8;">
+                    <li style="margin-bottom: 10px;">胆嚢の内側にできた「小さなできもの（突起）」です。その多く（約9割）はコレステロールが固まった良性のものですが、サイズや形によっては「がん」の可能性が含まれます。</li>
+                </ul>
+
+                <p style="font-size: 1rem; line-height: 1.9; margin-top: 16px;">当院では、血液の再検査や腹部超音波検査により丁寧に肝臓や胆のうの状態を確認いたします。経過観察で済むのか治療が必要なのかを判別し、より詳しい検査や専門的な診療が必要な場合には、適切な医療機関へご紹介いたします。</p>
+                <div style="text-align: center; margin-top: 16px;">
+                    <a href="超音波検査.html" class="btn-premium-gold">超音波検査の詳細はこちら</a>
+                </div>
+            </div>
+
+            <div class="feature-detail-box" style="padding: 24px; margin: 28px 0;">
+                <span class="feature-tag alt" style="font-size: 0.9rem; padding: 5px 14px;">胃の不調でも、原因が胃とは限りません</span>
+                <p style="font-size: 1rem; line-height: 1.9; margin-top: 14px;">胃痛や胃もたれ、胸やけ、吐き気などの症状があっても、その原因が必ずしも胃にあるとは限りません。</p>
+                <p style="font-size: 1rem; line-height: 1.9; margin-top: 10px;">みぞおちや上腹部の症状は、胃だけでなく、肝臓・胆のう・膵臓など、胃の周囲にある臓器の病気が原因となっていることもあります。</p>
+                <p style="font-size: 1rem; line-height: 1.9; margin-top: 10px;">当院では、症状や診察の結果に応じて超音波検査などを行い、症状の原因を幅広く確認します。</p>
+                <p style="font-size: 1rem; line-height: 1.9; margin-top: 10px;">胃カメラによる詳しい検査が必要と判断した場合には、適切な医療機関へご紹介いたします。</p>
+                <p style="font-size: 1rem; line-height: 1.9; margin-top: 10px;">症状だけでは判断しにくいお腹の不調についても、まずはお気軽にご相談ください。</p>
+            </div>
+
+            <div class="feature-detail-box" style="padding: 24px; margin: 28px 0;">
+                <span class="feature-tag" style="font-size: 0.9rem; padding: 5px 14px;">ヘリコバクターピロリ検査</span>
+                <p style="font-size: 1rem; line-height: 1.9; margin: 14px 0 10px;">健康診断または他院での内視鏡検査（胃カメラ）で、以下の病気が確定診断された方は当院で検査が可能です。<br>※内視鏡検査は保険適応に必須です。</p>
+                <ul class="feature-sub-list" style="font-size: 1rem; line-height: 1.7;">
+                    <li style="margin-bottom: 14px;">慢性胃炎または萎縮性胃炎</li>
+                    <li style="margin-bottom: 14px;">胃潰瘍、十二指腸潰瘍</li>
+                </ul>
+                <p style="font-weight: bold; font-size: 0.95rem; color: var(--primary-navy); margin: 16px 0 10px;">【当院でできる検査方法】</p>
+                <ul class="feature-sub-list" style="font-size: 1rem; line-height: 1.7;">
+                    <li style="margin-bottom: 14px;"><strong>血液・尿検査：</strong>ピロリ菌に対する抗体の有無を調べます</li>
+                    <li style="margin-bottom: 14px;"><strong>便検査：</strong>便の中にピロリ菌の成分があるか調べます</li>
+                </ul>
+            </div>
+        </section>
+
+        <div style="text-align: center; padding: 10px 20px 60px; display: flex; flex-direction: column; gap: 14px; align-items: center;">
+            <a href="診療内容.html" class="btn-premium-gold">診療案内一覧に戻る</a>
+            <a href="#" class="scroll-top-link">↑ トップへ</a>
+            <a href="index.html" class="btn-3d">トップページに戻る</a>
+        </div>
+
+        </main>
+
+        <footer class="footer">
+            <div style="margin-bottom: 20px;">
+                <img src="images/ロゴ_クローバー.png" alt="Yasunaga Clinic Logo" style="width: 120px; height: auto; object-fit: contain;">
+            </div>
+            &copy; Yasunaga Internal Medicine Clinic. All Rights Reserved.
+            <div class="footer-legal-links">
+                <a href="施設基準.html">施設基準について</a>
+                <a href="自費診療料金.html">自由診療料金のご案内</a>
+                <a href="プライバシーポリシー.html">プライバシーポリシー</a>
+            </div>
+        </footer>
+    </div>
+    <div class="fixed-call-bar">
+        <a href="tel:092-874-3433">
+            <svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                <path fill="#FF6B9D" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+            お電話でのご予約・お問い合わせ
+        </a>
+    </div>
+    <script src="script.js?v=9"></script>
+    <script>
+    // PC版ヘッダーの診療ステータス表示。判定ロジックは script.js のものをそのまま流用し、
+    // #clinic-status-summary の結果をヘッダーへ写すだけにして二重管理を避ける。
+    (function () {
+        var src = document.getElementById('clinic-status-summary');
+        var dst = document.getElementById('pcStatus');
+        if (!src || !dst) return;
+        var sync = function () {
+            var t = (src.textContent || '').trim();
+            if (!t || t === '読み込み中...') return;
+            dst.textContent = t;
+            dst.classList.toggle('is-open', !src.classList.contains('closed'));
+        };
+        document.addEventListener('DOMContentLoaded', function () { setTimeout(sync, 0); });
+        setInterval(sync, 10000);
+    })();
+    </script>
+</body>
+</html>
