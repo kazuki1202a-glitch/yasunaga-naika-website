@@ -96,16 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const fullGreeting = document.getElementById('full-greeting');
 
     if (toggleBtn && fullGreeting) {
-        // Launch promotion: show the full greeting by default for 30 days after the site goes live
-        const launchDate = new Date(2026, 8, 10); // 2026-09-10
-        const promoEnd = new Date(launchDate);
-        promoEnd.setDate(promoEnd.getDate() + 30);
-
-        if (new Date() < promoEnd) {
-            fullGreeting.classList.add('show');
-            toggleBtn.style.display = 'none';
-        }
-
         toggleBtn.addEventListener('click', () => {
             fullGreeting.classList.toggle('show');
             if (fullGreeting.classList.contains('show')) {
