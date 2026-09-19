@@ -94,11 +94,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Greeting Toggle Logic
     const toggleBtn = document.getElementById('toggle-greeting');
     const fullGreeting = document.getElementById('full-greeting');
+    const greetingTeaser = document.getElementById('greeting-teaser');
 
     if (toggleBtn && fullGreeting) {
         toggleBtn.addEventListener('click', () => {
             fullGreeting.classList.toggle('show');
-            if (fullGreeting.classList.contains('show')) {
+            const isShown = fullGreeting.classList.contains('show');
+            if (greetingTeaser) {
+                greetingTeaser.style.display = isShown ? 'none' : '-webkit-box';
+            }
+            if (isShown) {
                 toggleBtn.textContent = '閉じる';
             } else {
                 toggleBtn.textContent = '全文を表示する';

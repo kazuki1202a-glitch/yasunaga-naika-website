@@ -850,6 +850,13 @@ body.nav-open {
 }
 
 /* Greeting Accordion */
+#greeting-teaser {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
 #full-greeting {
     max-height: 0;
     overflow: hidden;
