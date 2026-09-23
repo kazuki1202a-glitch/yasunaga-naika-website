@@ -190,4 +190,18 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('pageshow', syncScrollTopBtn);
         syncScrollTopBtn();
     }
+
+    // GA4: track taps on the fixed call bar at the bottom of the screen
+    const fixedCallLink = document.querySelector('.fixed-call-bar a');
+    if (fixedCallLink) {
+        fixedCallLink.addEventListener('click', () => {
+            if (typeof gtag === 'function') {
+                gtag('event', 'tel_click', {
+                    event_category: 'contact',
+                    event_label: 'fixed_call_bar',
+                    page_location: window.location.href
+                });
+            }
+        });
+    }
 });
