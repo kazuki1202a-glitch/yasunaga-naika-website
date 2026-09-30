@@ -367,8 +367,8 @@
         box-shadow: 0 4px 16px rgba(15, 23, 42, 0.07);
     }
 
-    /* 高さ固定ではなく縦横比で指定し、画面幅が変わっても比率が保たれるようにする */
-    .facility-gallery-item img { aspect-ratio: 4 / 3; height: auto; object-fit: cover; }
+    /* 写真は縦長のポラロイド風（下に文字入り）なので、切り取らずに全体をそのまま表示する */
+    .facility-gallery-item img { width: 100%; height: auto; }
 
     /* ---------- 基本情報：住所など（左）／地図（右）＋電話カード（下段全幅） ---------- */
     .clinic-info { padding: 64px 40px; }
