@@ -620,6 +620,12 @@
         box-shadow: 0 4px 16px rgba(15, 23, 42, 0.07);
     }
 
+    /* 施設のご紹介だけ：写真を切り取らず全体表示。1段目＝横長の外観2枚、2段目以降＝縦長のポラロイド風を3枚ずつ */
+    #interior .about-photo-grid { grid-template-columns: repeat(6, 1fr); align-items: start; }
+    #interior .about-photo-grid .about-photo { aspect-ratio: auto; height: auto; object-fit: fill; }
+    #interior .about-photo-grid .about-photo:nth-child(-n+2) { grid-column: span 3; }
+    #interior .about-photo-grid .about-photo:nth-child(n+3) { grid-column: span 2; }
+
     /* 読み物カラム内の2枚組（外観＋周辺地図）は引き伸ばさない */
     .pc-main .feature-item .about-photo-grid { gap: 24px; }
 
